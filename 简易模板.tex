@@ -1,0 +1,159 @@
+\documentclass[12pt, a4paper, oneside]{ctexart}
+
+% 浮动对象位置控制
+\usepackage{float}
+
+% 颜色宏包
+\usepackage{xcolor}
+
+% 代码环境宏包
+\usepackage{listings}
+\lstset{
+	basicstyle=\ttfamily, 
+	breaklines=true,        
+	% postbreak=\mbox{$\hookrightarrow$},
+	xrightmargin=2em,
+}
+\lstdefinestyle{cppStyleCode}{
+    language=C++,
+	captionpos=t,
+	showstringspaces=false,
+	basicstyle=\ttfamily,
+    keywordstyle=\bfseries\color{purple},
+    commentstyle=\itshape\color{cyan},
+	showspaces=false,
+    tabsize=4,                       % 缩进长度
+    xleftmargin=2em,                 % 左侧边距
+    % framexleftmargin=1.5em           % 边框对齐左边距
+}
+\lstnewenvironment{cppcodeblock}[1][]{
+    \lstset{style=cppStyleCode, frame=shadowbox, numbers=left, numberstyle=\zihao{-5}\ttfamily, caption = {#1}} % 允许传入额外参数
+}{}
+
+% 绘图宏包
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, shapes.geometric}
+
+% 数学宏包
+\usepackage{amsmath, amsthm, amssymb, graphicx}
+
+% 花体字符拓展
+\usepackage{mathrsfs}
+
+% 页面布局
+\usepackage{geometry}
+\geometry{left=2.54cm, right=2.54cm, top=3.18cm, bottom=3.18cm}
+
+% 表格宏包
+\usepackage{array}
+\usepackage{diagbox}
+\usepackage{multirow}
+
+% 提供装饰符号
+% \usepackage{bbding}
+
+% 附录与脚注
+\usepackage{appendix}
+\usepackage{endnotes}
+% 重命名尾注标题（默认"Notes"）
+\renewcommand{\notesname}{Notes} 
+
+% 超链接宏包
+\usepackage[bookmarks=true, colorlinks, citecolor=blue, linkcolor=black]{hyperref}
+
+% \makeatletter
+% \renewenvironment{verse}
+% {\let\\ \@centercr
+% \list{}{\itemsep \z@
+% \itemindent -2em%
+% \listparindent \itemindent
+% \leftmargin -\itemindent
+% \rightmargin 0em}
+% \item\relax}
+% {\endlist}
+% \makeatother
+
+%导言区
+
+\linespread{1.5}
+\newtheorem{theorem}{定理}[section]
+\newtheorem{definition}[theorem]{定义}
+\newtheorem{lemma}[theorem]{引理}
+\newtheorem{corollary}[theorem]{推论}
+\newtheorem{example}[theorem]{例}
+\newtheorem{proposition}[theorem]{命题}
+
+\title{简易模板}
+\author{AAA}
+\date{\today}
+
+\renewcommand{\abstractname}{\Large\textbf{摘要}}
+\renewcommand{\refname}{\Large\textbf{参考文献}}
+\renewcommand{\figurename}{\textbf{图}}
+
+
+
+%正文区
+
+\begin{document}
+
+\pagestyle{empty}
+\vspace*{12em}
+% 标题
+\begin{center}
+{\Huge 《标题》}\\
+\bigskip  % 垂直间距
+{\Huge 简易模版}
+\end{center}
+\vspace{12em}  % 垂直间距
+% 信息
+\begin{center}
+{\Large  % 这里的字号也可以用别的方式修改
+\makebox[4em][s]{姓名}:\underline{\makebox[15em][c]{AAA}}\\
+\makebox[4em][s]{学号}:\underline{\makebox[15em][c]{123456789}}\\
+\makebox[4em][s]{专业}:\underline{\makebox[15em][c]{智慧能源创新工程}}\\
+\makebox[4em][s]{指导老师}:\underline{\makebox[15em][c]{AAA}}\\
+}
+\end{center}
+\clearpage
+
+\setcounter{page}{0}
+% \maketitle
+\thispagestyle{empty}
+
+\begin{abstract}
+    中文摘要
+
+    Abstract in English
+    \par\textbf{关键词：}关键词; 关键词.
+\end{abstract}
+
+\newpage
+
+\pagenumbering{Roman}
+\setcounter{page}{1}
+\tableofcontents
+\newpage
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+\section{引言}
+\newpage
+
+\section{小结}
+
+\newpage
+
+\newpage
+\theendnotes
+
+\newpage
+
+\bibliographystyle{plain}
+\begin{thebibliography}{99}
+    \bibitem{repo} 
+\end{thebibliography}
+
+\newpage
+
+\end{document}

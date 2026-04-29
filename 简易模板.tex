@@ -6,6 +6,12 @@
 % 颜色宏包
 \usepackage{xcolor}
 
+% 标题宏包
+\usepackage{caption}
+
+% 图片宏包
+\usepackage{graphicx}
+
 % 代码环境宏包
 \usepackage{listings}
 \lstset{
@@ -82,6 +88,7 @@
 \newtheorem{corollary}[theorem]{推论}
 \newtheorem{example}[theorem]{例}
 \newtheorem{proposition}[theorem]{命题}
+% \newtheorem{proof}{证明}[section]
 
 \title{简易模板}
 \author{AAA}
@@ -108,7 +115,7 @@
 \vspace{12em}  % 垂直间距
 % 信息
 \begin{center}
-{\Large  % 这里的字号也可以用别的方式修改
+{\Large  
 \makebox[4em][s]{姓名}:\underline{\makebox[15em][c]{AAA}}\\
 \makebox[4em][s]{学号}:\underline{\makebox[15em][c]{123456789}}\\
 \makebox[4em][s]{专业}:\underline{\makebox[15em][c]{智慧能源创新工程}}\\
@@ -140,7 +147,186 @@
 \section{引言}
 \newpage
 
+\section{正文}
+\subsection{段落格式}
+LaTeX默认的段落格式是首行缩进2个汉字宽度，段落之间没有额外的垂直间距。如果需要调整段落格式，可以使用以下命令：
+\begin{itemize}
+    \item \verb|\noindent|：取消首行缩进
+    \item \verb|\vspace{length}|：添加垂直间距
+\end{itemize}
+
+这是正常的段落缩进。
+
+\noindent
+这是\verb|\noindent|命令的示例。
+
+\vspace{2em}
+这样可以局部调整段落间距。
+
+段落与段落之间必须有一个空行，否则它们会被视为同一段落。
+比如这种情况不会换行。
+
+也可以使用\verb|\par|命令来结束当前段落并开始新段落。\par
+这是\verb|\par|命令的示例。
+
+也可以使用双斜线\verb|\\|来强制换行，但不建议在段落中频繁使用它，因为它会破坏段落的连续性。\verb|\\|命令示例：\\
+这是使用\verb|\\|命令强制换行的示例。
+
+\subsection{字体效果}
+LaTeX提供了多种字体效果，可以通过以下命令来实现：
+\begin{itemize}
+    \item \verb|\textrm{...}|：罗马字体 \textrm{words in roman}
+    \item \verb|\textsf{...}|：无衬线字体 \textsf{sans serif words}
+    \item \verb|\texttt{...}|：打印机字体 \texttt{words in teletype}
+    \item \verb|\textbf{...}|：粗体 \textbf{words in bold}
+    \item \verb|\textit{...}|：斜体 \textit{words in italics}
+    \item \verb|\textsl{...}|：伪斜体 \textsl{words slanted}
+    \item \verb|\textsc{...}|：小型大写 \textsc{words in smallcaps}
+    \item \verb|\underline{...}|：下划线 \underline{underlined words}
+\end{itemize}
+
+部分命令可以嵌套使用，如\verb|\textbf{\textit{...}}|可以同时实现粗体和斜体效果：\textbf{\textit{bold and italic words}}。
+
+\subsection{字体大小}
+\subsubsection{相对大小}
+\begin{itemize}
+    \item \verb|\tiny|：极小 {\tiny tiny}
+    \item \verb|\scriptsize|：第二小 {\scriptsize scriptsize}
+    \item \verb|\footnotesize|：脚注大小 {\footnotesize footnotesize}
+    \item \verb|\small|：小 {\small small}
+    \item \verb|\normalsize|：正常 {\normalsize normalsize}
+    \item \verb|\large|：大 {\large large}
+    \item \verb|\Large|：更大 {\Large Large}
+    \item \verb|\LARGE|：更更大 {\LARGE LARGE}
+    \item \verb|\huge|：巨大 {\huge huge}
+    \item \verb|\Huge|：更巨大 {\Huge Huge}
+\end{itemize}
+\newpage
+
+\subsubsection{绝对大小}
+
+{\fontsize{30pt}{24pt}\selectfont 这里是 30pt 字\\\indent 字体也太大了吧！}
+
+\subsection{注释}
+% 这是单行注释
+\iffalse
+这里的所有内容都会被跳过
+可以实现多行注释
+未闭合环境也不会被编译
+\begin{document}
+\fi
+
+\section{插入特殊组件}
+\subsection{插入列表}
+\paragraph{无序列表}
+\begin{itemize}
+    \item 第一项
+    \item 第二项
+    \item 第三项
+\end{itemize}
+\paragraph{有序列表}
+\begin{enumerate}
+    \item 第一项
+    \item 第二项
+    \item 第三项
+\end{enumerate}
+\paragraph{描述列表}
+\begin{description}
+    \item[描述一] 第一项
+    \item[描述二] 第二项
+    \item[描述三] 第三项
+\end{description}
+
+\paragraph{列表嵌套}
+\begin{itemize}
+    \item 第一层
+    \begin{itemize}
+        \item 第二层无序
+        \item 第二层第二项
+    \end{itemize}
+    \item 第一层
+    \begin{enumerate}
+        \item 第二层有序
+        \item 第二层第二项
+    \end{enumerate}
+\end{itemize}
+\subsection{插入图片}
+\includegraphics[width=0.4\textwidth, angle=90]{pic/学院logo.png}
+
+嵌入浮动体
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\textwidth]{pic/学院logo.png}
+    \caption{学院logo}
+    \label{image-logo}
+\end{figure}
+
+\subsection{图文混排}
+
+\noindent
+\begin{minipage}[c]{0.35\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{pic/学院logo.png}
+    \captionof{figure}{学院logo}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.6\textwidth}
+    这里利用minipage实现了左图右文的布局。左侧插入图片，右侧插入解释性文本内容。
+\end{minipage}
+
+\subsection{插入表格}
+可以使用\verb|tabular|环境来创建表格，以下是一些简单的示例：
+
+\begin{tabular}{|l|l|}
+    智慧能源    & 451       \\
+    \hline
+    机动        & 021       \\
+\end{tabular}
+
+\begin{tabular}{cc}
+    \hline
+    A & B \\
+    \hline
+    1 & 2 \\
+    \hline
+\end{tabular}
+
+\begin{tabular}{r|c}
+    \hline
+    A              & 1 \\
+    \cline{2-2} B  & 2  \\
+    \hline
+    \hline
+    C              & 3    \\
+    \hline
+\end{tabular}
+\subsection{插入代码块}
+
+\begin{cppcodeblock}[示例代码]
+#include <iostream>
+int main() {
+    std::cout << "Hello, World!" << std::endl;
+    return 0;
+}
+\end{cppcodeblock}
+
+\subsection{插入定理环境}
+\begin{theorem}
+    这是一个定理环境的示例。定理环境通常用于数学文章中，用来陈述重要的结果或结论。
+\end{theorem}
+\begin{proof}
+    这是一个证明环境的示例。证明环境和定理环境是配套的。
+\end{proof}
+\newpage
+
+\section{公式}
+
+\newpage
+
 \section{小结}
+\subsection{更多阅读}
+LaTeX相关信息请关注LaTeX官方网站\cite{LaTeX-Project}，TeX Live发行版\cite{TeX-Live}。
 
 \newpage
 
@@ -151,7 +337,8 @@
 
 \bibliographystyle{plain}
 \begin{thebibliography}{99}
-    \bibitem{repo} 
+    \bibitem{LaTeX-Project} LaTeX Project http://www.latex-project.org/ Official website
+    \bibitem{TeX-Live} TeX Live http://www.tug.org/texlive/
 \end{thebibliography}
 
 \newpage

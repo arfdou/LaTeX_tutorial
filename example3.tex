@@ -1,0 +1,23 @@
+\documentclass[12pt]{ctexart}
+\usepackage{geometry}
+\geometry{a4paper, left=2.54cm, right=2.54cm, top=3.18cm, bottom=3.18cm}
+
+\linespread{3}\selectfont
+\pagenumbering{roman}
+\begin{document}
+\setcounter{page}{1}
+Hello, \LaTeX\ world!
+
+linespread test linespread test linespread test linespread test linespread test linespread test linespread test
+
+\linespread{1.5}\selectfont
+new linespread new linespread new linespread new linespread new linespread new linespread new linespread new linespread new linespread new linespread 
+
+\newgeometry{left=3.54cm, right=3.54cm, top=4.18cm, bottom=4.18cm}
+This is a new page.
+
+
+\restoregeometry
+This is back to the original page.
+
+\end{document}
